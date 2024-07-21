@@ -5,7 +5,7 @@ import { Container, Navbar, NavDropdown } from 'react-bootstrap';
 import { BsList } from 'react-icons/bs';
 import { Outlet } from 'react-router-dom';
 
-export default function App() {
+export default function App(): JSX.Element {
 
   return (
     <>
