@@ -10,7 +10,7 @@ export default function App(): JSX.Element {
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
-        <Container>
+        <Container fluid>
           <NavDropdown title={<BsList />}>
             <NavDropdown.Item href='/button-sample'>Button sample</NavDropdown.Item>
           </NavDropdown>
