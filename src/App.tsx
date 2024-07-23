@@ -13,6 +13,7 @@ export default function App(): JSX.Element {
         <Container fluid>
           <NavDropdown title={<BsList />}>
             <NavDropdown.Item href='/button-sample'>Button sample</NavDropdown.Item>
+            <NavDropdown.Item href='/modal-sample'>Modal sample</NavDropdown.Item>
           </NavDropdown>
         </Container>
       </Navbar>
