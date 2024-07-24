@@ -8,7 +8,20 @@ import styles from './modal-dialog.module.css';
  *
  * @returns JSX.Element
  */
-export default function ModalDialog({ showDialog, onClose }: { showDialog: boolean, onClose: (selectedAnimal: string) => void }): JSX.Element {
+export default function ModalDialog(
+  {
+    onClose
+  }:
+    {
+      /**
+       * 画面を閉じる処理。
+       *
+       * @param selectedAnimal 選択した動物。
+       * @returns
+       */
+      onClose: (selectedAnimal: string) => void
+    }
+): JSX.Element {
 
   const [selectedAnimal, setSelectedAnimal] = useState<string>('');
 
@@ -16,7 +29,7 @@ export default function ModalDialog({ showDialog, onClose }: { showDialog: boole
     <>
       <Modal
         dialogClassName={styles['modal-dialog-width']}
-        show={showDialog}
+        show
       >
         <Modal.Header>
           Dialog sample.

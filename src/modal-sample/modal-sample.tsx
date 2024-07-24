@@ -33,7 +33,7 @@ export default function ModalSample(): JSX.Element {
       </Button>
       <span>{selectedAnimal}</span>
 
-      {showDialog && <ModalDialog showDialog={showDialog} onClose={handleCloseDialog} />}
+      {showDialog && <ModalDialog onClose={handleCloseDialog} />}
     </>
   );
 
