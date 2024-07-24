@@ -1,26 +1,23 @@
 import { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
-import styles from './modal-dialog.module.css';
+import styles from './sample-modal-dialog.module.css';
 
 /**
- * Modal ダイアログ。
+ * Sample Modal ダイアログ。
  *
  * @returns JSX.Element
  */
-export default function ModalDialog(
+export default function SampleModalDialog({ onClose }:
   {
-    onClose
-  }:
-    {
-      /**
-       * 画面を閉じる処理。
-       *
-       * @param selectedAnimal 選択した動物。
-       * @returns
-       */
-      onClose: (selectedAnimal: string) => void
-    }
+    /**
+     * 画面を閉じる処理。
+     *
+     * @param selectedAnimal 選択した動物。
+     * @returns
+     */
+    onClose: (selectedAnimal: string) => void
+  }
 ): JSX.Element {
 
   const [selectedAnimal, setSelectedAnimal] = useState<string>('');

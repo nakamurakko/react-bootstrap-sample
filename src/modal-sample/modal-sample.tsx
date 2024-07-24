@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
-import ModalDialog from './modal-dialog/modal-dialog';
+import SampleModalDialog from './sample-modal-dialog/sample-modal-dialog';
 
 /**
  * Modal サンプルコンポーネント。
@@ -33,7 +33,7 @@ export default function ModalSample(): JSX.Element {
       </Button>
       <span>{selectedAnimal}</span>
 
-      {showDialog && <ModalDialog onClose={handleCloseDialog} />}
+      {showDialog && <SampleModalDialog onClose={handleCloseDialog} />}
     </>
   );
 
