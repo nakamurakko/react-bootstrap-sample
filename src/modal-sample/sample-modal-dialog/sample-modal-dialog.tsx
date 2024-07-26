@@ -8,8 +8,9 @@ import styles from './sample-modal-dialog.module.css';
  *
  * @returns JSX.Element
  */
-export default function SampleModalDialog({ onClose }:
+export default function SampleModalDialog({ showDialog, onClose }:
   {
+    showDialog: boolean,
     /**
      * 画面を閉じる処理。
      *
@@ -22,11 +23,16 @@ export default function SampleModalDialog({ onClose }:
 
   const [selectedAnimal, setSelectedAnimal] = useState<string>('');
 
+  const handleShow = (): void => {
+    setSelectedAnimal('');
+  }
+
   return (
     <>
       <Modal
         dialogClassName={styles['modal-dialog-width']}
-        show
+        show={showDialog}
+        onShow={handleShow}
       >
         <Modal.Header>
           Dialog sample.
@@ -34,6 +40,7 @@ export default function SampleModalDialog({ onClose }:
         <Modal.Body>
           <Form>
             <Form.Check
+              checked={selectedAnimal === 'Dog'}
               inline
               label='Dog'
               name='animal'
@@ -42,6 +49,7 @@ export default function SampleModalDialog({ onClose }:
               onChange={(event): void => setSelectedAnimal(event.target.value)}
             />
             <Form.Check
+              checked={selectedAnimal === 'Cat'}
               inline
               label='Cat'
               name='animal'
@@ -50,6 +58,7 @@ export default function SampleModalDialog({ onClose }:
               onChange={(event): void => setSelectedAnimal(event.target.value)}
             />
             <Form.Check
+              checked={selectedAnimal === 'Hamster'}
               inline
               label='Hamster'
               name='animal'
