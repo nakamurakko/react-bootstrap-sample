@@ -13,10 +13,17 @@ export default function ModalSample(): JSX.Element {
   const [showDialog, setShowDialog] = useState<boolean>(false);
   const [selectedAnimal, setSelectedAnimal] = useState<string>('');
 
+  /**
+   * Modal 表示処理。
+   */
   const handleShowDialoog = (): void => {
     setShowDialog(true);
   }
 
+  /**
+   * Modal 終了処理。
+   * @param selectedAnimal 選択した動物。
+   */
   const handleCloseDialog = (selectedAnimal: string): void => {
     setSelectedAnimal(selectedAnimal);
     setShowDialog(false);

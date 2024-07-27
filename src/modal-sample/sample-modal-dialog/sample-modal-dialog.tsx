@@ -23,6 +23,9 @@ export default function SampleModalDialog({ showDialog, onClose }:
 
   const [selectedAnimal, setSelectedAnimal] = useState<string>('');
 
+  /**
+   * Modal 表示時の処理。
+   */
   const handleShow = (): void => {
     setSelectedAnimal('');
   }
