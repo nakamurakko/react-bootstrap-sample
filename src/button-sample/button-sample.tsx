@@ -14,14 +14,14 @@ export default function ButtonSample(): JSX.Element {
   /**
    * メッセージ表示ボタンクリック。
    */
-  function handleMessageClick(): void {
+  const handleMessageClick = (): void => {
     alert('Hello');
   }
 
   /**
    * カウントアップボタンクリック。
    */
-  function handleCountupClick(): void {
+  const handleCountupClick = (): void => {
     setClickCount(clickCount + 1);
   }
 
