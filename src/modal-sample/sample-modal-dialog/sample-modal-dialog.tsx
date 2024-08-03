@@ -28,7 +28,7 @@ export default function SampleModalDialog({ showDialog, onClose }:
    */
   const handleShow = (): void => {
     setSelectedAnimal('');
-  }
+  };
 
   return (
     <>

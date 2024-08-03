@@ -18,7 +18,7 @@ export default function ModalSample(): JSX.Element {
    */
   const handleShowDialoog = (): void => {
     setShowDialog(true);
-  }
+  };
 
   /**
    * Modal 終了処理。
@@ -27,7 +27,7 @@ export default function ModalSample(): JSX.Element {
   const handleCloseDialog = (selectedAnimal: string): void => {
     setSelectedAnimal(selectedAnimal);
     setShowDialog(false);
-  }
+  };
 
   return (
     <>
