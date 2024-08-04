@@ -28,11 +28,8 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
   /**
    * Modal 表示時の処理。
    */
-  const handleShow = (): void => {
-    void SampleService.sleep()
-      .then(() => {
-        setSelectedFruit('Grape');
-      });
+  const haneleCompleted = (): void => {
+    setSelectedFruit('Grape');
   };
 
   return (
@@ -40,43 +37,42 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
       <Modal
         dialogClassName={'modal-dialog-width'}
         show={showDialog}
-        onShow={handleShow}
       >
         <Modal.Header>
           Dialog sample.
         </Modal.Header>
         <Modal.Body>
-        <Suspense fallback={<p>Now loading</p>}>
-            <DialogContent />
-          <Form>
-            <Form.Check
-              checked={selectedFruit === 'Apple'}
-              inline
-              label='Apple'
-              name='fruit'
-              type='radio'
-              value='Apple'
-              onChange={(event): void => setSelectedFruit(event.target.value)}
-            />
-            <Form.Check
-              checked={selectedFruit === 'Orange'}
-              inline
-              label='Orange'
-              name='fruit'
-              type='radio'
-              value='Orange'
-              onChange={(event): void => setSelectedFruit(event.target.value)}
-            />
-            <Form.Check
-              checked={selectedFruit === 'Grape'}
-              inline
-              label='Grape'
-              name='fruit'
-              type='radio'
-              value='Grape'
-              onChange={(event): void => setSelectedFruit(event.target.value)}
-            />
-          </Form>
+          <Suspense fallback={<p>Now loading</p>}>
+            <DialogContent onCompleted={haneleCompleted} />
+            <Form>
+              <Form.Check
+                checked={selectedFruit === 'Apple'}
+                inline
+                label='Apple'
+                name='fruit'
+                type='radio'
+                value='Apple'
+                onChange={(event): void => setSelectedFruit(event.target.value)}
+              />
+              <Form.Check
+                checked={selectedFruit === 'Orange'}
+                inline
+                label='Orange'
+                name='fruit'
+                type='radio'
+                value='Orange'
+                onChange={(event): void => setSelectedFruit(event.target.value)}
+              />
+              <Form.Check
+                checked={selectedFruit === 'Grape'}
+                inline
+                label='Grape'
+                name='fruit'
+                type='radio'
+                value='Grape'
+                onChange={(event): void => setSelectedFruit(event.target.value)}
+              />
+            </Form>
           </Suspense>
         </Modal.Body>
         <Modal.Footer>
@@ -106,7 +102,11 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
 }
 
 let result: boolean = false;
-function DialogContent(): JSX.Element {
+function DialogContent({ onCompleted }:
+  {
+    onCompleted: () => void
+  }
+): JSX.Element {
 
   if (result) {
     return (
@@ -115,9 +115,12 @@ function DialogContent(): JSX.Element {
   }
 
   throw new Promise((resolve) => {
-    setTimeout(() => {
-      result = true;
-      resolve('');
-    }, 3000);
+    void SampleService.sleep()
+      .then(() => {
+        result = true;
+        resolve(null);
+        onCompleted();
+      });
   });
+
 }
