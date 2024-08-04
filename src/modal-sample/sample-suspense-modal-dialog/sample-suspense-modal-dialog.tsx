@@ -24,6 +24,7 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
 ): JSX.Element {
 
   const [selectedFruit, setSelectedFruit] = useState<string>('');
+  const [isCompleted, setIsCompleted] = useState<boolean>(false);
 
   /**
    * Modal 表示開始時の処理。
@@ -37,6 +38,7 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
    */
   const haneleCompleted = (): void => {
     setSelectedFruit('Grape');
+    setIsCompleted(true);
   };
 
   return (
@@ -50,7 +52,7 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
         </Modal.Header>
         <Modal.Body>
           <Suspense fallback={<p>Now loading</p>}>
-            <DialogContent onStartup={handleStartup} onCompleted={haneleCompleted} />
+            <DialogContent isExecuted={isCompleted} onStartup={handleStartup} onCompleted={haneleCompleted} />
             <Form>
               <Form.Check
                 checked={selectedFruit === 'Apple'}
@@ -108,9 +110,9 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
 
 }
 
-let result: boolean = false;
-function DialogContent({ onStartup, onCompleted }:
+function DialogContent({ isExecuted: isCompleted, onStartup, onCompleted }:
   {
+    isExecuted: boolean,
     /**
      * 起動処理。
      * @returns
@@ -124,7 +126,7 @@ function DialogContent({ onStartup, onCompleted }:
   }
 ): JSX.Element {
 
-  if (result) {
+  if (isCompleted) {
     return (
       <></>
     );
@@ -133,7 +135,6 @@ function DialogContent({ onStartup, onCompleted }:
   throw new Promise((resolve) => {
     void onStartup()
       .then(() => {
-        result = true;
         resolve(null);
         onCompleted();
       });
