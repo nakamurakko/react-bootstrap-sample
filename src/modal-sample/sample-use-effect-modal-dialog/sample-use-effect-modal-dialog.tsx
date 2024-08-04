@@ -1,6 +1,6 @@
 import '../../global.css';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
 /**
@@ -8,34 +8,38 @@ import { Button, Form, Modal } from 'react-bootstrap';
  *
  * @returns JSX.Element
  */
-export default function SampleModalDialog({ showDialog, onClose }:
+export default function SampleUseEffectModalDialog({ showDialog, onClose }:
   {
     showDialog: boolean,
     /**
      * 画面を閉じる処理。
      *
-     * @param selectedAnimal 選択した動物。
+     * @param selectedColor 選択した色。
      * @returns
      */
-    onClose: (selectedAnimal: string) => void
+    onClose: (selectedColor: string) => void
   }
 ): JSX.Element {
 
-  const [selectedAnimal, setSelectedAnimal] = useState<string>('');
+  const [selectedColor, setSelectedColor] = useState<string>('');
 
   /**
    * Modal 表示時の処理。
    */
-  const handleShow = (): void => {
-    setSelectedAnimal('Hamster');
-  };
+  useEffect(() => {
+    void new Promise((resolve) => {
+      setTimeout(() => {
+        setSelectedColor('Blue');
+        resolve('');
+      }, 1000);
+    });
+  }, []);
 
   return (
     <>
       <Modal
         dialogClassName={'modal-dialog-width'}
         show={showDialog}
-        onShow={handleShow}
       >
         <Modal.Header>
           Dialog sample.
@@ -43,31 +47,31 @@ export default function SampleModalDialog({ showDialog, onClose }:
         <Modal.Body>
           <Form>
             <Form.Check
-              checked={selectedAnimal === 'Dog'}
+              checked={selectedColor === 'Red'}
               inline
-              label='Dog'
-              name='animal'
+              label='Red'
+              name='color'
               type='radio'
-              value='Dog'
-              onChange={(event): void => setSelectedAnimal(event.target.value)}
+              value='Red'
+              onChange={(event): void => setSelectedColor(event.target.value)}
             />
             <Form.Check
-              checked={selectedAnimal === 'Cat'}
+              checked={selectedColor === 'Green'}
               inline
-              label='Cat'
-              name='animal'
+              label='Green'
+              name='color'
               type='radio'
-              value='Cat'
-              onChange={(event): void => setSelectedAnimal(event.target.value)}
+              value='Green'
+              onChange={(event): void => setSelectedColor(event.target.value)}
             />
             <Form.Check
-              checked={selectedAnimal === 'Hamster'}
+              checked={selectedColor === 'Blue'}
               inline
-              label='Hamster'
-              name='animal'
+              label='Blue'
+              name='color'
               type='radio'
-              value='Hamster'
-              onChange={(event): void => setSelectedAnimal(event.target.value)}
+              value='Blue'
+              onChange={(event): void => setSelectedColor(event.target.value)}
             />
           </Form>
         </Modal.Body>
@@ -75,7 +79,7 @@ export default function SampleModalDialog({ showDialog, onClose }:
           <Button
             onClick={
               (event): void => {
-                onClose(selectedAnimal);
+                onClose(selectedColor);
               }
             }
           >

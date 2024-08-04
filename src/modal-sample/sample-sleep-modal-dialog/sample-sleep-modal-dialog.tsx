@@ -3,31 +3,36 @@ import '../../global.css';
 import { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
+import { SampleService } from '../../sample-service';
+
 /**
  * Sample Modal ダイアログ。
  *
  * @returns JSX.Element
  */
-export default function SampleModalDialog({ showDialog, onClose }:
+export default function SampleSleepModalDialog({ showDialog, onClose }:
   {
     showDialog: boolean,
     /**
      * 画面を閉じる処理。
      *
-     * @param selectedAnimal 選択した動物。
+     * @param selectedCar 選択した車種。
      * @returns
      */
-    onClose: (selectedAnimal: string) => void
+    onClose: (selectedCar: string) => void
   }
 ): JSX.Element {
 
-  const [selectedAnimal, setSelectedAnimal] = useState<string>('');
+  const [selectedCar, setSelectedCar] = useState<string>('');
 
   /**
    * Modal 表示時の処理。
    */
   const handleShow = (): void => {
-    setSelectedAnimal('Hamster');
+    void SampleService.sleep()
+      .then(() => {
+        setSelectedCar('SUV');
+      });
   };
 
   return (
@@ -43,31 +48,31 @@ export default function SampleModalDialog({ showDialog, onClose }:
         <Modal.Body>
           <Form>
             <Form.Check
-              checked={selectedAnimal === 'Dog'}
+              checked={selectedCar === 'Sedan'}
               inline
-              label='Dog'
-              name='animal'
+              label='Sedan'
+              name='car'
               type='radio'
-              value='Dog'
-              onChange={(event): void => setSelectedAnimal(event.target.value)}
+              value='Sedan'
+              onChange={(event): void => setSelectedCar(event.target.value)}
             />
             <Form.Check
-              checked={selectedAnimal === 'Cat'}
+              checked={selectedCar === 'Wagon'}
               inline
-              label='Cat'
-              name='animal'
+              label='Wagon'
+              name='car'
               type='radio'
-              value='Cat'
-              onChange={(event): void => setSelectedAnimal(event.target.value)}
+              value='Wagon'
+              onChange={(event): void => setSelectedCar(event.target.value)}
             />
             <Form.Check
-              checked={selectedAnimal === 'Hamster'}
+              checked={selectedCar === 'SUV'}
               inline
-              label='Hamster'
-              name='animal'
+              label='SUV'
+              name='car'
               type='radio'
-              value='Hamster'
-              onChange={(event): void => setSelectedAnimal(event.target.value)}
+              value='SUV'
+              onChange={(event): void => setSelectedCar(event.target.value)}
             />
           </Form>
         </Modal.Body>
@@ -75,7 +80,7 @@ export default function SampleModalDialog({ showDialog, onClose }:
           <Button
             onClick={
               (event): void => {
-                onClose(selectedAnimal);
+                onClose(selectedCar);
               }
             }
           >
