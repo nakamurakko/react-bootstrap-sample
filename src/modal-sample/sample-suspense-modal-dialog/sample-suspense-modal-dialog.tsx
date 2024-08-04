@@ -26,6 +26,13 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
   const [selectedFruit, setSelectedFruit] = useState<string>('');
 
   /**
+   * Modal 表示開始時の処理。
+   */
+  const handleStartup = async (): Promise<void> => {
+    await SampleService.sleep();
+  };
+
+  /**
    * Modal 表示時の処理。
    */
   const haneleCompleted = (): void => {
@@ -43,7 +50,7 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
         </Modal.Header>
         <Modal.Body>
           <Suspense fallback={<p>Now loading</p>}>
-            <DialogContent onCompleted={haneleCompleted} />
+            <DialogContent onStartup={handleStartup} onCompleted={haneleCompleted} />
             <Form>
               <Form.Check
                 checked={selectedFruit === 'Apple'}
@@ -102,8 +109,17 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
 }
 
 let result: boolean = false;
-function DialogContent({ onCompleted }:
+function DialogContent({ onStartup, onCompleted }:
   {
+    /**
+     * 起動処理。
+     * @returns
+     */
+    onStartup: () => Promise<void>,
+    /**
+     * 完了処理。
+     * @returns
+     */
     onCompleted: () => void
   }
 ): JSX.Element {
@@ -115,7 +131,7 @@ function DialogContent({ onCompleted }:
   }
 
   throw new Promise((resolve) => {
-    void SampleService.sleep()
+    void onStartup()
       .then(() => {
         result = true;
         resolve(null);
