@@ -30,6 +30,7 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
    * Modal 表示開始時の処理。
    */
   const handleStartup = async (): Promise<void> => {
+    setIsCompleted(false);
     await SampleService.sleep();
   };
 
@@ -37,8 +38,8 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
    * Modal 表示時の処理。
    */
   const haneleCompleted = (): void => {
-    setSelectedFruit('Grape');
     setIsCompleted(true);
+    setSelectedFruit('Grape');
   };
 
   return (
@@ -52,7 +53,7 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
         </Modal.Header>
         <Modal.Body>
           <Suspense fallback={<p>Now loading</p>}>
-            <DialogContent isExecuted={isCompleted} onStartup={handleStartup} onCompleted={haneleCompleted} />
+            <DialogContent isCompleted={isCompleted} onStartup={handleStartup} onCompleted={haneleCompleted} />
             <Form>
               <Form.Check
                 checked={selectedFruit === 'Apple'}
@@ -110,9 +111,12 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
 
 }
 
-function DialogContent({ isExecuted: isCompleted, onStartup, onCompleted }:
+function DialogContent({ isCompleted, onStartup, onCompleted }:
   {
-    isExecuted: boolean,
+    /**
+     * 処理が完了しているかどうか。
+     */
+    isCompleted: boolean,
     /**
      * 起動処理。
      * @returns
@@ -132,10 +136,9 @@ function DialogContent({ isExecuted: isCompleted, onStartup, onCompleted }:
     );
   }
 
-  throw new Promise((resolve) => {
-    void onStartup()
-      .then(() => {
-        resolve(null);
+  throw new Promise(() => {
+    void onStartup().then()
+      .finally(() => {
         onCompleted();
       });
   });
