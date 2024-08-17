@@ -15,6 +15,7 @@ export default function App(): JSX.Element {
             <NavDropdown.Item href='/button-sample'>Button sample</NavDropdown.Item>
             <NavDropdown.Item href='/modal-sample'>Modal sample</NavDropdown.Item>
           </NavDropdown>
+          <Navbar.Brand>React Bootstrap sample</Navbar.Brand>
         </Container>
       </Navbar>
 
