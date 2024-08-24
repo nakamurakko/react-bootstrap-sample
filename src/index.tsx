@@ -12,9 +12,9 @@ import ModalSample from './modal-sample/modal-sample';
 
 const router: Router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route path="button-sample" element={<ButtonSample />} />
-      <Route path="modal-sample" element={<ModalSample />} />
+    <Route path='/' element={<App />}>
+      <Route path='button-sample' element={<ButtonSample />} />
+      <Route path='modal-sample' element={<ModalSample />} />
     </Route>
   )
 );
