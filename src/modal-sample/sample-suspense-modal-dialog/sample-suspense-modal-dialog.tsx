@@ -1,6 +1,6 @@
 import '../../global.css';
 
-import { Suspense, useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
 import { SampleService } from '../../sample-service';
@@ -21,7 +21,7 @@ export default function SampleSuspenseModalDialog({ showDialog, onClose }:
      */
     onClose: (selectedFruit: string) => void
   }
-): JSX.Element {
+): React.JSX.Element {
 
   const [selectedFruit, setSelectedFruit] = useState<string>('');
   const [isCompleted, setIsCompleted] = useState<boolean>(false);

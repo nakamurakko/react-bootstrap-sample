@@ -1,6 +1,6 @@
 import '../../global.css';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
 /**
@@ -19,7 +19,7 @@ export default function SampleModalDialog({ showDialog, onClose }:
      */
     onClose: (selectedAnimal: string) => void
   }
-): JSX.Element {
+): React.JSX.Element {
 
   const [selectedAnimal, setSelectedAnimal] = useState<string>('');
 

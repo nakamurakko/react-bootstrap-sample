@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 
 /**
@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
  *
  * @returns
  */
-export default function ButtonSample(): JSX.Element {
+export default function ButtonSample(): React.JSX.Element {
 
   /** クリックカウント数。 */
   const [clickCount, setClickCount] = useState<number>(0);

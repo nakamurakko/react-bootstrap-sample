@@ -1,6 +1,6 @@
 import '../../global.css';
 
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
 /**
@@ -19,7 +19,7 @@ export default function SampleUseEffectModalDialog({ showDialog, onClose }:
      */
     onClose: (selectedColor: string) => void
   }
-): JSX.Element {
+): React.JSX.Element {
 
   const [selectedColor, setSelectedColor] = useState<string>('');
 

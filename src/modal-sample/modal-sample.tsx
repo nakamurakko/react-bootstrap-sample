@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 
 import SampleModalDialog from './sample-modal-dialog/sample-modal-dialog';
@@ -11,7 +11,7 @@ import SampleUseEffectModalDialog from './sample-use-effect-modal-dialog/sample-
  *
  * @returns
  */
-export default function ModalSample(): JSX.Element {
+export default function ModalSample(): React.JSX.Element {
 
   //#region ダイアログサンプル。
 

@@ -1,6 +1,6 @@
 import '../../global.css';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
 import { SampleService } from '../../sample-service';
@@ -21,7 +21,7 @@ export default function SampleSleepModalDialog({ showDialog, onClose }:
      */
     onClose: (selectedCar: string) => void
   }
-): JSX.Element {
+): React.JSX.Element {
 
   const [selectedCar, setSelectedCar] = useState<string>('');
 
