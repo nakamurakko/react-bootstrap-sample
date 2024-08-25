@@ -9,7 +9,7 @@ import SampleUseEffectModalDialog from './sample-use-effect-modal-dialog/sample-
 /**
  * Modal サンプルコンポーネント。
  *
- * @returns JSX.Element
+ * @returns
  */
 export default function ModalSample(): JSX.Element {
 

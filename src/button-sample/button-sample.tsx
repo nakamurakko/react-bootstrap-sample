@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 /**
  * Button サンプルコンポーネント。
  *
- * @returns JSX.Element
+ * @returns
  */
 export default function ButtonSample(): JSX.Element {
 

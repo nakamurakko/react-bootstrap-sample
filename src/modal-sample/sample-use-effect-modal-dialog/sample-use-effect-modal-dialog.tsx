@@ -6,7 +6,7 @@ import { Button, Form, Modal } from 'react-bootstrap';
 /**
  * Sample Modal ダイアログ。
  *
- * @returns JSX.Element
+ * @returns
  */
 export default function SampleUseEffectModalDialog({ showDialog, onClose }:
   {

@@ -8,7 +8,7 @@ export default function App(): JSX.Element {
 
   return (
     <>
-      <Navbar expand='lg' className='bg-body-tertiary'>
+      <Navbar className='bg-body-tertiary' expand='lg' >
         <Container fluid>
           <NavDropdown title='React Bootstrap sample'>
             <NavDropdown.Item href='/button-sample'>Button sample</NavDropdown.Item>

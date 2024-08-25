@@ -8,7 +8,7 @@ import { SampleService } from '../../sample-service';
 /**
  * Sample Modal ダイアログ。
  *
- * @returns JSX.Element
+ * @returns
  */
 export default function SampleSleepModalDialog({ showDialog, onClose }:
   {
