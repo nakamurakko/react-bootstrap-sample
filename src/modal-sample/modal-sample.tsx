@@ -13,6 +13,8 @@ import SampleUseEffectModalDialog from './sample-use-effect-modal-dialog/sample-
  */
 export default function ModalSample(): JSX.Element {
 
+  //#region ダイアログサンプル。
+
   const [showDialog, setShowDialog] = useState<boolean>(false);
   const [selectedAnimal, setSelectedAnimal] = useState<string>('');
 
@@ -32,6 +34,10 @@ export default function ModalSample(): JSX.Element {
     setShowDialog(false);
   };
 
+  //#endregion
+
+  //#region sleep 後に起動するダイアログサンプル。
+
   const [showSleepDialog, setShowSleepDialog] = useState<boolean>(false);
   const [selectedCar, setSelectedCar] = useState<string>('');
 
@@ -43,6 +49,10 @@ export default function ModalSample(): JSX.Element {
     setSelectedCar(selectedCar);
     setShowSleepDialog(false);
   };
+
+  //#endregion
+
+  //#region Suspense で遅延表示させるダイアログサンプル。
 
   const [showSuspenseDialog, setShowSuspenseDialog] = useState<boolean>(false);
   const [selectedFruit, setSelectedFruit] = useState<string>('');
@@ -56,6 +66,10 @@ export default function ModalSample(): JSX.Element {
     setShowSuspenseDialog(false);
   };
 
+  //#endregion
+
+  //#region useEffect を使用したダイアログサンプル。
+
   const [showUseEffectDialog, setShowUseEffectDialog] = useState<boolean>(false);
   const [selectedColor, setSelectedColor] = useState<string>('');
 
@@ -67,6 +81,8 @@ export default function ModalSample(): JSX.Element {
     setSelectedColor(selectedColor);
     setShowUseEffectDialog(false);
   };
+
+  //#endregion
 
   return (
     <>
