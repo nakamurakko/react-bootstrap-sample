@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, Table } from 'react-bootstrap';
 
 import SampleModalDialog from './sample-modal-dialog/sample-modal-dialog';
 import SampleSleepModalDialog from './sample-sleep-modal-dialog/sample-sleep-modal-dialog';
 import SampleSuspenseModalDialog from './sample-suspense-modal-dialog/sample-suspense-modal-dialog';
 import SampleUseEffectModalDialog from './sample-use-effect-modal-dialog/sample-use-effect-modal-dialog';
+import SampleUseImperativeHandleDialog, { SampleUseImperativeHandleDialogType } from './sample-use-imperative-handle-dialog/sample-use-imperative-handle-dialog';
 
 /**
  * Modal サンプルコンポーネント。
@@ -80,6 +81,25 @@ export default function ModalSample(): React.JSX.Element {
   const handleCloseUseEffectDialog = (selectedColor: string): void => {
     setSelectedColor(selectedColor);
     setShowUseEffectDialog(false);
+  };
+
+  //#endregion
+
+  //#region
+
+  const sampleUseImperativeHandleDialogRef = useRef<SampleUseImperativeHandleDialogType>(null);
+  const [selectedGem, setSelectedGem] = useState<string>('');
+
+  const handleShoweUseImperativeDialog = async (): Promise<void> => {
+    const gem = await sampleUseImperativeHandleDialogRef?.current?.showdDialog();
+    console.log(gem);
+    if (gem !== undefined) {
+      setSelectedGem(gem);
+    }
+  };
+
+  const handleCloseUseImperativeDialog = (selectedGem: string): void => {
+    setSelectedGem(selectedGem);
   };
 
   //#endregion
@@ -170,6 +190,23 @@ export default function ModalSample(): React.JSX.Element {
                 onClose={handleCloseUseEffectDialog}
               />
             }
+          </tr>
+          <tr>
+            <td>
+              <Button
+                onClick={handleShoweUseImperativeDialog}
+              >
+                Show dialog (useImperativeHandle)
+              </Button>
+            </td>
+            <td>
+              <span>{selectedGem}</span>
+            </td>
+
+            <SampleUseImperativeHandleDialog
+              ref={sampleUseImperativeHandleDialogRef}
+              onClose={handleCloseUseImperativeDialog}
+            />
           </tr>
 
         </tbody>
