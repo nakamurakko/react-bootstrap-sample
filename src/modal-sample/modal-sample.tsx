@@ -85,7 +85,7 @@ export default function ModalSample(): React.JSX.Element {
 
   //#endregion
 
-  //#region
+  //#region useImperativeHandle を使用したダイアログサンプル。
 
   const sampleUseImperativeHandleDialogRef = useRef<SampleUseImperativeHandleDialogType>(null);
   const [selectedGem, setSelectedGem] = useState<string>('');
