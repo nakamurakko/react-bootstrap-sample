@@ -2,9 +2,9 @@ import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { Button, Form, Modal, ModalProps } from 'react-bootstrap';
 
 /**
- * SampleUseImperativeHandleDialog の型定義。
+ * SampleUseImperativeHandleDialog の Ref 型定義。
  */
-export interface SampleUseImperativeHandleDialogType {
+export interface SampleUseImperativeHandleDialogRef {
   showdDialog: () => void;
 }
 
@@ -18,7 +18,7 @@ export interface SampleUseImperativeHandleDialogProps {
 /**
  * Sample Modal ダイアログ。
  */
-const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDialogType, SampleUseImperativeHandleDialogProps>(({ onClose }, ref) => {
+const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDialogRef, SampleUseImperativeHandleDialogProps>(({ onClose }, ref) => {
 
   const dialogRef = useRef<ModalProps>(null);
   const [showSelf, setShowSelf] = useState<boolean>(false);

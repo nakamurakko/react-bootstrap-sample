@@ -5,7 +5,7 @@ import SampleModalDialog from './sample-modal-dialog/sample-modal-dialog';
 import SampleSleepModalDialog from './sample-sleep-modal-dialog/sample-sleep-modal-dialog';
 import SampleSuspenseModalDialog from './sample-suspense-modal-dialog/sample-suspense-modal-dialog';
 import SampleUseEffectModalDialog from './sample-use-effect-modal-dialog/sample-use-effect-modal-dialog';
-import SampleUseImperativeHandleDialog, { SampleUseImperativeHandleDialogType } from './sample-use-imperative-handle-dialog/sample-use-imperative-handle-dialog';
+import SampleUseImperativeHandleDialog, { SampleUseImperativeHandleDialogRef } from './sample-use-imperative-handle-dialog/sample-use-imperative-handle-dialog';
 
 /**
  * Modal サンプルコンポーネント。
@@ -87,7 +87,7 @@ export default function ModalSample(): React.JSX.Element {
 
   //#region useImperativeHandle を使用したダイアログサンプル。
 
-  const sampleUseImperativeHandleDialogRef = useRef<SampleUseImperativeHandleDialogType>(null);
+  const sampleUseImperativeHandleDialogRef = useRef<SampleUseImperativeHandleDialogRef>(null);
   const [selectedGem, setSelectedGem] = useState<string>('');
 
   const handleShoweUseImperativeDialog = async (): Promise<void> => {
