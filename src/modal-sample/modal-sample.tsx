@@ -91,11 +91,7 @@ export default function ModalSample(): React.JSX.Element {
   const [selectedGem, setSelectedGem] = useState<string>('');
 
   const handleShoweUseImperativeDialog = async (): Promise<void> => {
-    const gem = await sampleUseImperativeHandleDialogRef?.current?.showdDialog();
-    console.log(gem);
-    if (gem !== undefined) {
-      setSelectedGem(gem);
-    }
+    sampleUseImperativeHandleDialogRef?.current?.showdDialog();
   };
 
   const handleCloseUseImperativeDialog = (selectedGem: string): void => {
