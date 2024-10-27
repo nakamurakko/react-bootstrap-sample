@@ -90,12 +90,10 @@ export default function ModalSample(): React.JSX.Element {
   const sampleUseImperativeHandleDialogRef = useRef<SampleUseImperativeHandleDialogRef>(null);
   const [selectedGem, setSelectedGem] = useState<string>('');
 
-  const handleShoweUseImperativeDialog = async (): Promise<void> => {
-    sampleUseImperativeHandleDialogRef?.current?.showdDialog();
-  };
-
-  const handleCloseUseImperativeDialog = (selectedGem: string): void => {
-    setSelectedGem(selectedGem);
+  const handleShoweUseImperativeDialog = (): void => {
+    sampleUseImperativeHandleDialogRef?.current?.showdDialog((value) => {
+      setSelectedGem(value);
+    });
   };
 
   //#endregion
@@ -201,7 +199,6 @@ export default function ModalSample(): React.JSX.Element {
 
             <SampleUseImperativeHandleDialog
               ref={sampleUseImperativeHandleDialogRef}
-              onClose={handleCloseUseImperativeDialog}
             />
           </tr>
 

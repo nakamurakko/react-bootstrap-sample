@@ -5,35 +5,39 @@ import { Button, Form, Modal, ModalProps } from 'react-bootstrap';
  * SampleUseImperativeHandleDialog の Ref 型定義。
  */
 export interface SampleUseImperativeHandleDialogRef {
-  showdDialog: () => void;
+  /**
+   * ダイアログを表示する。
+   * @param resultFunction 表示終了後に実行する関数。
+   * @returns
+   */
+  showdDialog: (resultFunction?: ResultFunctin) => void;
 }
 
-/**
- * SampleUseImperativeHandleDialog の props 定義。
- */
-export interface SampleUseImperativeHandleDialogProps {
-  onClose: (selectedGem: string) => void
-}
+type ResultFunctin = (value: string) => void;
 
 /**
  * Sample Modal ダイアログ。
  */
-const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDialogRef, SampleUseImperativeHandleDialogProps>(({ onClose }, ref) => {
+const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDialogRef>((never, ref) => {
 
   const dialogRef = useRef<ModalProps>(null);
   const [showSelf, setShowSelf] = useState<boolean>(false);
+  const resultFunctionRef = useRef<ResultFunctin>();
 
   const [selectedGem, setSelectedGem] = useState<string>('');
 
-  const handleClose = (): void => {
+  const handleClose = (value: string): void => {
     setShowSelf(false);
-    onClose(selectedGem);
+    if (resultFunctionRef.current) {
+      resultFunctionRef.current(value);
+    }
   };
 
   useImperativeHandle(ref,
     () => ({
-      showdDialog: (): void => {
+      showdDialog: (resultFunction?: ResultFunctin): void => {
         setShowSelf(true);
+        resultFunctionRef.current = resultFunction;
       }
     })
   );
@@ -81,12 +85,12 @@ const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDial
         </Modal.Body>
         <Modal.Footer>
           <Button
-            onClick={handleClose}
+            onClick={(): void => handleClose(selectedGem)}
           >
             Select
           </Button>
           <Button
-            onClick={handleClose}
+            onClick={(): void => handleClose('')}
           >
             Close
           </Button>
