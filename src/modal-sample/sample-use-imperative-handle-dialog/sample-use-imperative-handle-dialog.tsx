@@ -5,12 +5,20 @@ import { Button, Form, Modal, ModalProps } from 'react-bootstrap';
  * SampleUseImperativeHandleDialog の Ref 型定義。
  */
 export interface SampleUseImperativeHandleDialogRef {
+
   /**
    * ダイアログを表示する。
    * @param resultFunction 表示終了後に実行する関数。
    * @returns
    */
   showdDialog: (resultFunction?: ResultFunctin) => void;
+
+  /**
+   * ダイアログを表示する。
+   * @returns
+   */
+  showDialogAsync: () => Promise<string>;
+
 }
 
 type ResultFunctin = (value: string) => void;
@@ -22,9 +30,19 @@ const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDial
 
   const dialogRef = useRef<ModalProps>(null);
   const [showSelf, setShowSelf] = useState<boolean>(false);
+  /** 実行結果を処理する関数への参照。 */
   const resultFunctionRef = useRef<ResultFunctin>();
 
   const [selectedGem, setSelectedGem] = useState<string>('');
+
+  /**
+   * ダイアログを表示する。
+   * @param resultFunction 表示終了後に実行する関数。
+   */
+  const showdDialog = (resultFunction?: ResultFunctin): void => {
+    setShowSelf(true);
+    resultFunctionRef.current = resultFunction;
+  };
 
   const handleClose = (value: string): void => {
     setShowSelf(false);
@@ -35,10 +53,17 @@ const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDial
 
   useImperativeHandle(ref,
     () => ({
+
       showdDialog: (resultFunction?: ResultFunctin): void => {
-        setShowSelf(true);
-        resultFunctionRef.current = resultFunction;
+        showdDialog(resultFunction);
+      },
+
+      showDialogAsync: async (): Promise<string> => {
+        return await new Promise<string>((resolve) => {
+          showdDialog(value => resolve(value));
+        });
       }
+
     })
   );
 
