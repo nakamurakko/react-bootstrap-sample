@@ -11,7 +11,7 @@ export interface SampleUseImperativeHandleDialogRef {
    * @param resultFunction 表示終了後に実行する関数。
    * @returns
    */
-  showdDialog: (resultFunction?: ResultFunctin) => void;
+  showdDialog: (resultFunction?: ResultFunction) => void;
 
   /**
    * ダイアログを表示する。
@@ -21,7 +21,7 @@ export interface SampleUseImperativeHandleDialogRef {
 
 }
 
-type ResultFunctin = (value: string) => void;
+type ResultFunction = (value: string) => void;
 
 /**
  * Sample Modal ダイアログ。
@@ -31,7 +31,7 @@ const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDial
   const dialogRef = useRef<ModalProps>(null);
   const [showSelf, setShowSelf] = useState<boolean>(false);
   /** 実行結果を処理する関数への参照。 */
-  const resultFunctionRef = useRef<ResultFunctin>();
+  const resultFunctionRef = useRef<ResultFunction>();
 
   const [selectedGem, setSelectedGem] = useState<string>('');
 
@@ -39,7 +39,7 @@ const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDial
    * ダイアログを表示する。
    * @param resultFunction 表示終了後に実行する関数。
    */
-  const showdDialog = (resultFunction?: ResultFunctin): void => {
+  const showdDialog = (resultFunction?: ResultFunction): void => {
     setShowSelf(true);
     resultFunctionRef.current = resultFunction;
   };
@@ -54,7 +54,7 @@ const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDial
   useImperativeHandle(ref,
     () => ({
 
-      showdDialog: (resultFunction?: ResultFunctin): void => {
+      showdDialog: (resultFunction?: ResultFunction): void => {
         showdDialog(resultFunction);
       },
 
