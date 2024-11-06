@@ -60,7 +60,7 @@ const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDial
 
       showDialogAsync: async (): Promise<string> => {
         return await new Promise<string>((resolve) => {
-          showdDialog(value => resolve(value));
+          showdDialog(resolve);
         });
       }
 
