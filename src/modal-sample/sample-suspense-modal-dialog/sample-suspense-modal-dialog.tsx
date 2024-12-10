@@ -128,7 +128,7 @@ function DialogContent({ isCompleted, onStartup, onCompleted }:
      */
     onCompleted: () => void
   }
-): JSX.Element {
+): React.JSX.Element {
 
   if (isCompleted) {
     return (

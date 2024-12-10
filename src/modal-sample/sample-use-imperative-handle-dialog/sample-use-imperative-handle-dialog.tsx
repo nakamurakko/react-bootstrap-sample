@@ -31,7 +31,7 @@ const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDial
   const dialogRef = useRef<ModalProps>(null);
   const [showSelf, setShowSelf] = useState<boolean>(false);
   /** 実行結果を処理する関数への参照。 */
-  const resultFunctionRef = useRef<ResultFunction>();
+  const resultFunctionRef = useRef<ResultFunction>(undefined);
 
   const [selectedGem, setSelectedGem] = useState<string>('');
 
