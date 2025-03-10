@@ -6,6 +6,10 @@ const TabEventKeys = Object.freeze({
   'information': 'information'
 });
 
+/**
+ * Tab サンプルコンポーネント。
+ * @returns
+ */
 export default function TabSample(): React.JSX.Element {
 
   const [tabActiveKey, setTabActiveKey] = useState('');
