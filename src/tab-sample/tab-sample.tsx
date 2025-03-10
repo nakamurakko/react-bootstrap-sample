@@ -8,6 +8,7 @@ const TabEventKeys = Object.freeze({
 
 /**
  * Tab サンプルコンポーネント。
+ *
  * @returns
  */
 export default function TabSample(): React.JSX.Element {
