@@ -26,7 +26,7 @@ type ResultFunction = (value: string) => void;
 /**
  * Sample Modal ダイアログ。
  */
-const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDialogRef>((never, ref) => {
+const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDialogRef>((props, ref) => {
 
   const dialogRef = useRef<ModalProps>(null);
   const [showSelf, setShowSelf] = useState<boolean>(false);
