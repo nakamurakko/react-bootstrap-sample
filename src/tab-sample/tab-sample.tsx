@@ -13,7 +13,7 @@ const TabEventKeys = Object.freeze({
  */
 export default function TabSample(): React.JSX.Element {
 
-  const [tabActiveKey, setTabActiveKey] = useState('');
+  const [tabActiveKey, setTabActiveKey] = useState<string>(TabEventKeys.home);
 
   return (
     <>
