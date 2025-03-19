@@ -74,7 +74,10 @@ const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDial
         ref={dialogRef}
         show={showSelf}
       >
-        <Modal.Header>
+        <Modal.Header
+          closeButton
+          onHide={(): void => handleClose('')}
+        >
           Dialog sample.
         </Modal.Header>
         <Modal.Body>

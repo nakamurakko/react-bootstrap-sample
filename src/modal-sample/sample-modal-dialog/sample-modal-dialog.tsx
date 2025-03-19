@@ -37,7 +37,10 @@ export default function SampleModalDialog({ showDialog, onClose }:
         show={showDialog}
         onShow={handleShow}
       >
-        <Modal.Header>
+        <Modal.Header
+          closeButton
+          onHide={(): void => onClose('')}
+        >
           Dialog sample.
         </Modal.Header>
         <Modal.Body>
@@ -73,20 +76,12 @@ export default function SampleModalDialog({ showDialog, onClose }:
         </Modal.Body>
         <Modal.Footer>
           <Button
-            onClick={
-              (event): void => {
-                onClose(selectedAnimal);
-              }
-            }
+            onClick={(): void => onClose(selectedAnimal)}
           >
             Select
           </Button>
           <Button
-            onClick={
-              (event): void => {
-                onClose('');
-              }
-            }
+            onClick={(): void => onClose('')}
           >
             Close
           </Button>

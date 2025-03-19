@@ -42,7 +42,10 @@ export default function SampleSleepModalDialog({ showDialog, onClose }:
         show={showDialog}
         onShow={handleShow}
       >
-        <Modal.Header>
+        <Modal.Header
+          closeButton
+          onHide={(): void => onClose('')}
+        >
           Dialog sample.
         </Modal.Header>
         <Modal.Body>
@@ -78,20 +81,12 @@ export default function SampleSleepModalDialog({ showDialog, onClose }:
         </Modal.Body>
         <Modal.Footer>
           <Button
-            onClick={
-              (event): void => {
-                onClose(selectedCar);
-              }
-            }
+            onClick={(): void => onClose(selectedCar)}
           >
             Select
           </Button>
           <Button
-            onClick={
-              (event): void => {
-                onClose('');
-              }
-            }
+            onClick={(): void => onClose('')}
           >
             Close
           </Button>

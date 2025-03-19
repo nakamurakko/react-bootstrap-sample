@@ -41,7 +41,10 @@ export default function SampleUseEffectModalDialog({ showDialog, onClose }:
         dialogClassName={'modal-dialog-width'}
         show={showDialog}
       >
-        <Modal.Header>
+        <Modal.Header
+          closeButton
+          onHide={(): void => onClose('')}
+        >
           Dialog sample.
         </Modal.Header>
         <Modal.Body>
@@ -77,20 +80,12 @@ export default function SampleUseEffectModalDialog({ showDialog, onClose }:
         </Modal.Body>
         <Modal.Footer>
           <Button
-            onClick={
-              (event): void => {
-                onClose(selectedColor);
-              }
-            }
+            onClick={(): void => onClose(selectedColor)}
           >
             Select
           </Button>
           <Button
-            onClick={
-              (event): void => {
-                onClose('');
-              }
-            }
+            onClick={(): void => onClose('')}
           >
             Close
           </Button>
