@@ -10,6 +10,8 @@ export default function ButtonSample(): React.JSX.Element {
 
   /** クリックカウント数。 */
   const [clickCount, setClickCount] = useState<number>(0);
+  /** クリックカウント数(複数カウントアップ)。 */
+  const [clickMultipleCount, setClickMultipleCount] = useState<number>(0);
 
   /**
    * メッセージ表示ボタンクリック。
@@ -23,6 +25,18 @@ export default function ButtonSample(): React.JSX.Element {
    */
   const handleCountupClick = (): void => {
     setClickCount(clickCount + 1);
+  };
+
+  /**
+   * 複数カウントアップボタンクリック。
+   */
+  const handleCountupMultipleClick = (): void => {
+    setClickMultipleCount((prev: number): number => {
+      return prev + 1;
+    });
+    setClickMultipleCount((prev: number): number => {
+      return prev + 1;
+    });
   };
 
   return (
@@ -39,6 +53,12 @@ export default function ButtonSample(): React.JSX.Element {
         onClick={handleCountupClick}
       >
         {clickCount}
+      </Button>
+
+      <Button
+        onClick={handleCountupMultipleClick}
+      >
+        {clickMultipleCount}
       </Button>
     </>
   );
