@@ -12,6 +12,7 @@ export default function App(): React.JSX.Element {
       <Navbar className='bg-body-tertiary' expand='lg' >
         <Container fluid>
           <NavDropdown title='React Bootstrap sample'>
+            <NavDropdown.Item href='/badge-sample'>Badge sample</NavDropdown.Item>
             <NavDropdown.Item href='/button-sample'>Button sample</NavDropdown.Item>
             <NavDropdown.Item href='/modal-sample'>Modal sample</NavDropdown.Item>
             <NavDropdown.Item href='/tab-sample'>Tab sample</NavDropdown.Item>

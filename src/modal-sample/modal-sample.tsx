@@ -206,7 +206,6 @@ export default function ModalSample(): React.JSX.Element {
               ref={sampleUseImperativeHandleDialogRef}
             />
           </tr>
-
         </tbody>
       </Table>
     </>
