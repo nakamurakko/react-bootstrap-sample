@@ -1,5 +1,7 @@
 import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
-import { Button, Form, Modal, ModalProps } from 'react-bootstrap';
+import { Button, Form, Modal } from 'react-bootstrap';
+
+import type { ModalProps } from 'react-bootstrap';
 
 /**
  * SampleUseImperativeHandleDialog の Ref 型定義。

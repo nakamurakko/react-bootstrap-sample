@@ -5,7 +5,9 @@ import SampleModalDialog from './sample-modal-dialog/sample-modal-dialog';
 import SampleSleepModalDialog from './sample-sleep-modal-dialog/sample-sleep-modal-dialog';
 import SampleSuspenseModalDialog from './sample-suspense-modal-dialog/sample-suspense-modal-dialog';
 import SampleUseEffectModalDialog from './sample-use-effect-modal-dialog/sample-use-effect-modal-dialog';
-import SampleUseImperativeHandleDialog, { SampleUseImperativeHandleDialogRef } from './sample-use-imperative-handle-dialog/sample-use-imperative-handle-dialog';
+import SampleUseImperativeHandleDialog from './sample-use-imperative-handle-dialog/sample-use-imperative-handle-dialog';
+
+import type { SampleUseImperativeHandleDialogRef } from './sample-use-imperative-handle-dialog/sample-use-imperative-handle-dialog';
 
 /**
  * Modal サンプルコンポーネント。
