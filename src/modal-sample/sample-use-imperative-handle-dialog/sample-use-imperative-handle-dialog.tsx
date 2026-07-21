@@ -1,7 +1,8 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import React, { useImperativeHandle, useRef, useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 
 import type { ModalProps } from 'react-bootstrap';
+import type { Ref } from 'react';
 
 /**
  * SampleUseImperativeHandleDialog の Ref 型定義。
@@ -28,7 +29,12 @@ type ResultFunction = (value: string) => void;
 /**
  * Sample Modal ダイアログ。
  */
-const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDialogRef>((props, ref) => {
+export default function SampleUseImperativeHandleDialog(
+  props:
+    {
+      ref: Ref<SampleUseImperativeHandleDialogRef>,
+    }
+): React.ReactElement {
 
   const dialogRef = useRef<ModalProps>(null);
   const [showSelf, setShowSelf] = useState<boolean>(false);
@@ -53,7 +59,7 @@ const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDial
     }
   };
 
-  useImperativeHandle(ref,
+  useImperativeHandle(props.ref,
     () => ({
 
       showdDialog: (resultFunction?: ResultFunction): void => {
@@ -129,8 +135,4 @@ const SampleUseImperativeHandleDialog = forwardRef<SampleUseImperativeHandleDial
     </>
   );
 
-});
-
-SampleUseImperativeHandleDialog.displayName = SampleUseImperativeHandleDialog.name;
-
-export default SampleUseImperativeHandleDialog;
+}
